@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">pierwszyProjekt</string>
+    <string name="back">&lt;x|</string>
 </resources>

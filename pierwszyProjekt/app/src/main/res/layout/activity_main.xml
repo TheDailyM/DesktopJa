@@ -28,26 +28,29 @@
 
             <ImageButton
                 android:id="@+id/button4"
-                android:layout_width="1dp"
-                android:layout_height="38dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
                 android:backgroundTint="#FCF6FD"
+                android:contentDescription="123"
                 android:src="@android:drawable/ic_menu_sort_by_size" />
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
-                android:layout_height="37dp"
+                android:layout_height="50dp"
                 android:layout_weight="3"
+                android:contentDescription="123"
                 android:text="Kalkulator"
                 android:textSize="34sp" />
 
             <ImageButton
                 android:id="@+id/button5"
-                android:layout_width="0dp"
-                android:layout_height="38dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
                 android:backgroundTint="#FCF6FD"
+                android:contentDescription="123"
                 android:src="@android:drawable/ic_menu_agenda" />
 
             <Space
@@ -57,10 +60,11 @@
 
             <ImageButton
                 android:id="@+id/button6"
-                android:layout_width="1dp"
-                android:layout_height="38dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
                 android:backgroundTint="#FCF6FD"
+                android:contentDescription="123"
                 android:src="@android:drawable/ic_menu_recent_history" />
 
         </LinearLayout>
@@ -71,10 +75,12 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/wyswietlacz"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textAlignment="textEnd"
+                android:textSize="60sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -84,8 +90,8 @@
 
             <Button
                 android:id="@+id/button_mc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
                 android:backgroundTint="#FCF6FD"
                 android:text="MC"
@@ -95,8 +101,8 @@
 
             <Button
                 android:id="@+id/button_mr"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
                 android:backgroundTint="#FCF6FD"
                 android:text="MR"
@@ -106,8 +112,8 @@
 
             <Button
                 android:id="@+id/button_mplus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
                 android:backgroundTint="#FCF6FD"
                 android:text="M+"
@@ -117,8 +123,8 @@
 
             <Button
                 android:id="@+id/button_mminus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
                 android:backgroundTint="#FCF6FD"
                 android:text="M-"
@@ -128,8 +134,8 @@
 
             <Button
                 android:id="@+id/button_ms"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
                 android:backgroundTint="#FCF6FD"
                 android:text="MS"
@@ -140,8 +146,8 @@
 
             <Button
                 android:id="@+id/button_m"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
                 android:backgroundTint="#FCF6FD"
                 android:text="M^"
@@ -316,7 +322,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:backgroundTint="#FCF6FD"
-                    android:text="2-\/x"
+                    android:text="2-/x"
                     android:textColor="#0C0A0A"
                     app:cornerRadius="0dp" />
 
@@ -373,7 +379,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:backgroundTint="#FCF6FD"
-                    android:text="<x|"
+                    android:text="@string/back"
                     android:textColor="#0C0A0A"
                     app:cornerRadius="0dp" />
 
