@@ -23,18 +23,32 @@
             android:layout_weight="2"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/wyniktext"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="25dp"
+                android:text="X: 0 - 0 :0"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textIsSelectable="false"
+                android:textSize="60sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="#000000"
+            android:backgroundTint="#000000"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:backgroundTint="#000000"
                 android:orientation="horizontal">
 
                 <Button
@@ -44,8 +58,10 @@
                     android:layout_weight="1"
                     android:backgroundTint="#FFFFFF"
                     android:contentDescription="cos"
-                    android:insetLeft="2dp"
-                    android:insetRight="2dp"
+                    android:insetLeft="0dp"
+                    android:insetTop="0dp"
+                    android:insetRight="1dp"
+                    android:insetBottom="1dp"
                     android:textColor="#000000"
                     android:textSize="60sp"
                     app:cornerRadius="@dimen/cardview_default_elevation" />
@@ -57,7 +73,10 @@
                     android:layout_weight="1"
                     android:backgroundTint="#FFFFFF"
                     android:contentDescription="cos"
-                    android:insetLeft="2dp"
+                    android:insetLeft="1dp"
+                    android:insetTop="0dp"
+                    android:insetRight="1dp"
+                    android:insetBottom="1dp"
                     android:textColor="#000000"
                     android:textSize="60sp"
                     app:cornerRadius="@dimen/cardview_default_elevation" />
@@ -69,7 +88,10 @@
                     android:layout_weight="1"
                     android:backgroundTint="#FFFFFF"
                     android:contentDescription="cos"
-                    android:insetLeft="2dp"
+                    android:insetLeft="1dp"
+                    android:insetTop="0dp"
+                    android:insetRight="0dp"
+                    android:insetBottom="1dp"
                     android:textColor="#000000"
                     android:textSize="60sp"
                     app:cornerRadius="@dimen/cardview_default_elevation" />
@@ -80,6 +102,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:backgroundTint="#000000"
                 android:orientation="horizontal">
 
                 <Button
@@ -89,7 +112,10 @@
                     android:layout_weight="1"
                     android:backgroundTint="#FFFFFF"
                     android:contentDescription="cos"
-                    android:insetLeft="2dp"
+                    android:insetLeft="0dp"
+                    android:insetTop="1dp"
+                    android:insetRight="1dp"
+                    android:insetBottom="1dp"
                     android:textColor="#000000"
                     android:textSize="60sp"
                     app:cornerRadius="@dimen/cardview_default_elevation" />
@@ -101,7 +127,10 @@
                     android:layout_weight="1"
                     android:backgroundTint="#FFFFFF"
                     android:contentDescription="cos"
-                    android:insetLeft="2dp"
+                    android:insetLeft="1dp"
+                    android:insetTop="1dp"
+                    android:insetRight="1dp"
+                    android:insetBottom="1dp"
                     android:textColor="#000000"
                     android:textSize="60sp"
                     app:cornerRadius="@dimen/cardview_default_elevation" />
@@ -113,7 +142,10 @@
                     android:layout_weight="1"
                     android:backgroundTint="#FFFFFF"
                     android:contentDescription="cos"
-                    android:insetLeft="2dp"
+                    android:insetLeft="1dp"
+                    android:insetTop="1dp"
+                    android:insetRight="0dp"
+                    android:insetBottom="1dp"
                     android:textColor="#000000"
                     android:textSize="60sp"
                     app:cornerRadius="@dimen/cardview_default_elevation" />
@@ -123,6 +155,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:backgroundTint="#000000"
                 android:orientation="horizontal">
 
                 <Button
@@ -132,7 +165,10 @@
                     android:layout_weight="1"
                     android:backgroundTint="#FFFFFF"
                     android:contentDescription="cos"
-                    android:insetLeft="2dp"
+                    android:insetLeft="0dp"
+                    android:insetTop="1dp"
+                    android:insetRight="1dp"
+                    android:insetBottom="0dp"
                     android:textColor="#000000"
                     android:textSize="60sp"
                     app:cornerRadius="@dimen/cardview_default_elevation" />
@@ -144,7 +180,10 @@
                     android:layout_weight="1"
                     android:backgroundTint="#FFFFFF"
                     android:contentDescription="cos"
-                    android:insetLeft="2dp"
+                    android:insetLeft="1dp"
+                    android:insetTop="1dp"
+                    android:insetRight="1dp"
+                    android:insetBottom="0dp"
                     android:textColor="#000000"
                     android:textSize="60sp"
                     app:cornerRadius="@dimen/cardview_default_elevation" />
@@ -156,7 +195,10 @@
                     android:layout_weight="1"
                     android:backgroundTint="#FFFFFF"
                     android:contentDescription="cos"
-                    android:insetLeft="2dp"
+                    android:insetLeft="1dp"
+                    android:insetTop="1dp"
+                    android:insetRight="0dp"
+                    android:insetBottom="0dp"
                     android:textColor="#000000"
                     android:textSize="60sp"
                     app:cornerRadius="@dimen/cardview_default_elevation" />

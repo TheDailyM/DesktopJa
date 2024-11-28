@@ -2,27 +2,29 @@ package com.example.kolkoikrzyzyk
 
 import android.os.Bundle
 import android.widget.Button
-import android.widget.GridView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var button1:Button;
-    lateinit var button2:Button;
-    lateinit var button3:Button;
-    lateinit var button4:Button;
-    lateinit var button5:Button;
-    lateinit var button6:Button;
-    lateinit var button7:Button;
-    lateinit var button8:Button;
-    lateinit var button9:Button;
-    var zmienna =1;
+    private lateinit var button1:Button;
+    private lateinit var button2:Button;
+    private lateinit var button3:Button;
+    private lateinit var button4:Button;
+    private lateinit var button5:Button;
+    private lateinit var button6:Button;
+    private lateinit var button7:Button;
+    private lateinit var button8:Button;
+    private lateinit var button9:Button;
+    private var zmienna =1;
+    private lateinit var tab:List<Button>;
+    private var wygraneX =0;
+    private var wygraneO =0;
+    private lateinit var wynik:TextView;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +45,8 @@ class MainActivity : AppCompatActivity() {
         button8 = findViewById(R.id.button8);
         button9 = findViewById(R.id.button9);
         println("sprawdam czy działa");
+        tab = listOf(button1, button2, button3, button4, button5, button6, button7, button8, button9);
+        wynik = findViewById(R.id.wyniktext);
 
         button1.setOnClickListener{
             if (button1.text == ""){
@@ -55,6 +59,7 @@ class MainActivity : AppCompatActivity() {
                     zmienna++;
                 }
                 spr();
+                tie();
             }
         }
 
@@ -69,6 +74,7 @@ class MainActivity : AppCompatActivity() {
                     zmienna++;
                 }
                 spr();
+                tie();
             }
         }
 
@@ -82,6 +88,7 @@ class MainActivity : AppCompatActivity() {
                     zmienna++;
                 }
                 spr();
+                tie();
             }
         }
 
@@ -95,6 +102,7 @@ class MainActivity : AppCompatActivity() {
                     zmienna++;
                 }
                 spr();
+                tie();
             }
         }
 
@@ -109,6 +117,7 @@ class MainActivity : AppCompatActivity() {
                     zmienna++;
                 }
                 spr();
+                tie();
             }
         }
 
@@ -123,6 +132,7 @@ class MainActivity : AppCompatActivity() {
                     zmienna++;
                 }
                 spr();
+                tie();
             }
         }
 
@@ -137,6 +147,7 @@ class MainActivity : AppCompatActivity() {
                     zmienna++;
                 }
                 spr();
+                tie();
             }
         }
 
@@ -151,6 +162,7 @@ class MainActivity : AppCompatActivity() {
                     zmienna++;
                 }
                 spr();
+                tie();
             }
         }
 
@@ -165,6 +177,7 @@ class MainActivity : AppCompatActivity() {
                     zmienna++;
                 }
                 spr();
+                tie();
             }
         }
 
@@ -173,8 +186,30 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+    private fun tie(){
+        var result = true;
+        for (el in tab) {
+            result = result && el.text.isNotEmpty();
+        }
 
-    fun spr(){
+//        if (
+//                    (button1.text == "X" || button1.text == "0") && (button2.text == "X" || button2.text == "0") &&
+//                    (button3.text == "X" || button3.text == "0") && (button4.text == "X" || button4.text == "0") &&
+//                    (button5.text == "X" || button5.text == "0") && (button6.text == "X" || button6.text == "0") &&
+//                    (button7.text == "X" || button7.text == "0") && (button8.text == "X" || button8.text == "0") &&
+//                    (button9.text == "X" || button9.text == "0")
+//           )
+
+        if (result)
+        {
+            for(el in tab) {
+                el.text = "";
+            }
+            Toast.makeText(this, "Remis", Toast.LENGTH_LONG).show();
+        }
+    }
+
+     private fun spr(){
         if (button1.text == "X" && button2.text == "X" && button3.text == "X" || button1.text == "0" && button2.text == "0" && button3.text == "0"){
             win(arg1 = button1.text.toString());
         }
@@ -201,8 +236,18 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun win(arg1: String){
+    private fun win(arg1: String){
         Toast.makeText(this, "Gracz $arg1 wygrał/a", Toast.LENGTH_LONG).show();
-        exitProcess(0);
+        for(el in tab) {
+            el.text = "";
+        }
+
+        if (arg1 == "X"){
+            wygraneX++
+        }
+        else{
+            wygraneO++
+        }
+        wynik.text = "X: $wygraneX:$wygraneO :0";
     }
 }
