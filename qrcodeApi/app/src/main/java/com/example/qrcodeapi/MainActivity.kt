@@ -11,8 +11,11 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import kotlin.system.exitProcess
 import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
+import java.time.LocalDate
 
 
 class MainActivity : AppCompatActivity() {
@@ -21,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var miasto: EditText;
     lateinit var jakiemiasto: String;
     lateinit var wyswietlaczTemp: TextView;
+    lateinit var apiInterface: ApiInterface;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,13 +52,40 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+    private fun getApiInterface() {
+        apiInterface = RetrofitInstance.getInstance().create(MainActivity.ApiInterface::class.java)
+    }
 
+    private fun getExampleData(){
+        val call = apiInterface.getExampleData()
+        call.enqueue(object : Callback<ExampleResponse> {
+            override fun onResponse(call: Call<ExampleResponse>, response: Response<ExampleResponse>) {
+                if (response.isSuccessful && response.body()!=null){
+                    // TODO: Process data
+                }
+            }
+
+            override fun onFailure(call: Call<ExampleResponse>, t: Throwable) {
+                t.printStackTrace()
+            }
+        }
+    }
     fun akcja(){
-        wyswietlaczTemp.text = "90°C";
+        getApiInterface();
+
     }
 
     interface ApiInterface {
-        @GET("end/point")
+        @GET("api/data/synop/station/jeleniagora")
         fun getExampleData(): Call<ExampleResponse>
     }
+}
+
+class ExampleResponse {
+    public var id = 0;
+    public var stacja = "";
+    public var data: LocalDate = LocalDate.of(0,0,0);
+    public var temp = 0.0;
+    public var opady = 0.0;
+
 }
