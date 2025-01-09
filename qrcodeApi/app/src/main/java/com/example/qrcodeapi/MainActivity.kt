@@ -1,10 +1,10 @@
 package com.example.qrcodeapi
 
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -13,8 +13,8 @@ import kotlin.system.exitProcess
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Path
 import java.time.LocalDate
 
 
@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         miasto.setOnFocusChangeListener {v, b -> run{
             jakiemiasto = miasto.text.toString()
             println(jakiemiasto);
-            akcja();
+            akcja(jakiemiasto);
         }}
 
         buttonZamknij.setOnClickListener {
@@ -52,15 +52,14 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-    private fun getApiInterface() {
+    private fun getApiInterface(jakiemiasto: String) {
         apiInterface = RetrofitInstance.getInstance().create(MainActivity.ApiInterface::class.java)
-    }
-
-    private fun getExampleData(){
-        val call = apiInterface.getExampleData()
+        val call = apiInterface.getExampleData(jakiemiasto)
         call.enqueue(object : Callback<ExampleResponse> {
             override fun onResponse(call: Call<ExampleResponse>, response: Response<ExampleResponse>) {
                 if (response.isSuccessful && response.body()!=null){
+                    Toast.makeText(this@MainActivity, response.body()?.stacja, Toast.LENGTH_SHORT)
+
                     // TODO: Process data
                 }
             }
@@ -68,16 +67,17 @@ class MainActivity : AppCompatActivity() {
             override fun onFailure(call: Call<ExampleResponse>, t: Throwable) {
                 t.printStackTrace()
             }
-        }
+        }).run {  }
     }
-    fun akcja(){
-        getApiInterface();
+
+    fun akcja(jakiemiasto: String) {
+        getApiInterface(jakiemiasto);
 
     }
 
     interface ApiInterface {
-        @GET("api/data/synop/station/jeleniagora")
-        fun getExampleData(): Call<ExampleResponse>
+        @GET("api/data/synop/station/{miasto}")
+        fun getExampleData(@Path("miasto") miasto:String): Call<ExampleResponse>
     }
 }
 
