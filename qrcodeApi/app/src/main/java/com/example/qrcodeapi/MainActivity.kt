@@ -25,6 +25,10 @@ class MainActivity : AppCompatActivity() {
     lateinit var jakiemiasto: String;
     lateinit var wyswietlaczTemp: TextView;
     lateinit var apiInterface: ApiInterface;
+    lateinit var buttonPotwierdx: Button;
+    lateinit var wyswietlaczStacja: TextView;
+    lateinit var wyswietlaczData: TextView;
+    lateinit var wyswietlaczOpady: TextView;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,13 +43,18 @@ class MainActivity : AppCompatActivity() {
         buttonZamknij = findViewById<Button>(R.id.button);
         miasto = findViewById<EditText>(R.id.textMiasto);
         wyswietlaczTemp = findViewById<TextView>(R.id.wyswietlaczTemp);
+        buttonPotwierdx = findViewById<Button>(R.id.button_potwierdx);
+        wyswietlaczStacja = findViewById<TextView>(R.id.wyswietlaczStacja);
+        wyswietlaczData = findViewById<TextView>(R.id.wyswietlaczData);
+        wyswietlaczOpady = findViewById<TextView>(R.id.wyswietlaczOpady);
 
 
-        miasto.setOnFocusChangeListener {v, b -> run{
+
+        buttonPotwierdx.setOnClickListener() {
             jakiemiasto = miasto.text.toString()
             println(jakiemiasto);
             akcja(jakiemiasto);
-        }}
+        }
 
         buttonZamknij.setOnClickListener {
             exitProcess(0);
@@ -58,7 +67,13 @@ class MainActivity : AppCompatActivity() {
         call.enqueue(object : Callback<ExampleResponse> {
             override fun onResponse(call: Call<ExampleResponse>, response: Response<ExampleResponse>) {
                 if (response.isSuccessful && response.body()!=null){
-                    Toast.makeText(this@MainActivity, response.body()?.stacja, Toast.LENGTH_SHORT)
+                    var body = response.body();
+                    if (body != null) {
+                        wyswietlaczTemp.text = body.temperatura;
+                        wyswietlaczOpady.text = body.suma_opadu;
+                        wyswietlaczData.text = body.data_pomiaru;
+                        wyswietlaczStacja.text = body.stacja;
+                    };
 
                     // TODO: Process data
                 }
@@ -81,11 +96,10 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-class ExampleResponse {
-    public var id = 0;
-    public var stacja = "";
-    public var data: LocalDate = LocalDate.of(0,0,0);
-    public var temp = 0.0;
-    public var opady = 0.0;
-
-}
+data class ExampleResponse(
+    val id_stacji: String,
+    val stacja: String,
+    val data_pomiaru: String,
+    val temperatura: String,
+    val suma_opadu: String
+)
