@@ -6,6 +6,8 @@ package com.mycompany.sqlproject;
 
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  *
@@ -19,6 +21,42 @@ public class sqlproject extends javax.swing.JFrame {
     public sqlproject() {
         initComponents();
     }
+    
+    public class Main {
+
+    public static void connect() {
+        // connection string
+        var url = "jdbc:sqlite:./nazwa.db";
+        var sql = "SELECT id, nazwa FROM warehouses";
+
+        try (var conn = DriverManager.getConnection(url);
+             var stmt = conn.createStatement();
+             var rs = stmt.executeQuery(sql)) {
+            System.out.println("Connection to SQLite has been established.");
+            
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String nazwa_filmu = rs.getString("nazwa");
+                System.out.printf("%-5s%-25s%-10s%n",
+                        rs.getInt("id"),
+                        rs.getString("nazwa")
+                        
+                
+                );
+            }
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void main(String[] args) {
+        connect();
+        
+        
+        
+    }
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
