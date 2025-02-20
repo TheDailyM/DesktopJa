@@ -5,6 +5,7 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +13,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 lateinit var Pole: TextView
+lateinit var backgroud: LinearLayout
 
 class MainActivity : AppCompatActivity(), SensorEventListener {
 
@@ -29,6 +31,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         }
 
         Pole = findViewById<TextView>(R.id.text)
+        backgroud = findViewById<LinearLayout>(R.id.LinearLayout)
 
         SensorActivity()
     }
@@ -40,8 +43,8 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     override fun onSensorChanged(event: SensorEvent?) {
         var zmienna = event?.values?.get(0)
         Pole.text = zmienna.toString()
-
-
+        var hue = zmienna!! / 400;
+        backgroud.background.alpha = hue.toInt();
     }
     override fun onResume() {
         super.onResume()
